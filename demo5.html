@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gean Oscar Hembra | Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Fixed Navigation - Fully Transparent */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* This makes the bar see-through */
+    padding: 15px 50px;
+    border-radius: 0;
+    backdrop-filter: blur(5px);    /* Optional: helps text readability without adding color */
+    box-shadow: none;              /* Removed the heavy shadow for a cleaner look */
+    z-index: 1000;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Keeps a subtle divider */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #4ecca3;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #4ecca3;
+    color: #1a1a1a;
+}
+
+/* Header Styles */
+header {
+    background-color: #1a1a1a; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.welcome-msg {
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+header h1 {
+    color: #4ecca3;
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* Section Logic */
+section {
+    padding: 120px 20px 60px; /* Top padding adjusted for fixed nav */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Offset for fixed nav when jumping to sections */
+#home, #about, #Achievements, #Strengths, #Goals {
+    scroll-margin-top: 0;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+section p, section ul, section ol {
+    font-size: 1.2rem;
+    max-width: 800px;
+    text-align: left;
+    margin: 0 auto 20px;
+    width: 100%; /* Ensures consistency across types */
+}
+
+/* --- Optimized About Section Layout --- */
+#about {
+    display: flex;
+    flex-direction: row;      /* Side-by-side content */
+    flex-wrap: wrap;          /* Allows the H2 to break to its own line */
+    justify-content: center;
+    align-items: center;      /* Vertically aligns text and image */
+    gap: 30px;
+    padding: 100px 20px 40px; /* Space for the fixed nav */
+}
+
+/* Forces the "About Me" title to sit at the very top */
+#about h2 {
+    width: 100%;              /* Forces the title to take the full width */
+    text-align: center;       /* Centers the title */
+    margin-bottom: 40px;      /* Space between title and the content below */
+    order: -1;                /* Ensures it stays at the top in the flex flow */
+}
+
+/* The Content Box (Left Side) */
+#about p {
+    flex: 0 1 450px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 6px solid #2c3e50;
+    margin: 0;                /* Reset margins so it stays left */
+    font-size: 1.1rem;
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+/* The Cute Image Container (Right Side) */
+#about a {
+    flex: 0 0 250px;          /* Fixed cute size */
+    display: flex;
+    justify-content: center;
+}
+
+#about img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;       /* Cute circular shape */
+    border: 5px solid rgba(44, 62, 80, 0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+/* Mobile Responsive: Stack them vertically on phones */
+@media (max-width: 768px) {
+    #about {
+        flex-direction: column;
+        text-align: center;
+    }
+    #about p {
+        max-width: 100%;
+    }
+}
+
+/* Section Colors */
+#about { background-color: #f4d03f; color: #2c3e50; }
+#Achievements { background-color: #27ae60; color: #fff; }
+#Strengths { background-color: #e74c3c; color: #fff; }
+#Goals { background-color: #8b4513; color: #fff; }
+
+/* Back to Home Button */
+.home-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background: rgba(0,0,0,0.1);
+    color: inherit;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px;
+        gap: 8px;
+    }
+    nav a {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+
+/* --- Achievement Gallery Styling --- */
+.achievement-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    aspect-ratio: 1 / 1; /* Makes images perfectly square and uniform */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    background-color: rgba(255,255,255,0.1);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0; /* Overrides previous global img margins */
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+/* Elegant Hover State */
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.gallery-item:hover img {
+    filter: brightness(70%);
+}
+
+/* Captions that appear on hover */
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    transform: translateY(0);
+}
+
+</style>
+
+</head>
+<body>
+
+<nav id="main-nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#Achievements">Achievements</a>
+    <a href="#Strengths">Strengths</a>
+    <a href="#Goals">Goals</a>
+</nav>
+
+<header id="home">
+    <p class="welcome-msg">Welcome to my personal portfolio</p>
+    <h1>GEAN OSCAR HEMBRA</h1>
+	
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am a dedicated educator who loves blending creativity with technology. I enjoy sharing my knowledge and helping my students discover their potential in the digital world.</p>
+    <a target="_blank" href="https://www.facebook.com/geanoscar.hembra">
+        <img src="aboutme.jpg" alt="Gean Oscar Hembra Profile">
+    </a>
+</section>
+
+<section id="Achievements">
+    <h2>Achievements</h2>
+    <ul>
+        <li><strong>Champion:</strong> Cake and Fondant Decoration contest (University Week)</li>
+        <li>Developed skills in the field of baking and making coffee </li>
+    </ul>
+	
+	<div class="achievement-gallery">
+    <div class="gallery-item">
+        <img src="baking.jpg" alt="Cake Decoration 1">
+        <div class="caption">Cake Decoration Champion</div>
+    </div>
+    <div class="gallery-item">
+        <img src="cake.jpg" alt="Baking Skills">
+        <div class="caption">Culinary Arts</div>
+    </div>
+    <div class="gallery-item">
+        <img src="kape.jpg" alt="coffee">
+        <div class="caption">barista</div>
+    </div>
+</div>
+	
+</section>
+
+<section id="Strengths">
+    <h2>Strengths</h2>
+    <ol>
+        <li>Artistic precision in pastry and cake decoration</li>
+        <li>High flexibility in handling diverse educational tasks</li>
+        <li>Ability to simplify complex technical lessons for students</li>
+    </ol>
+</section>
+
+<section id="Goals">
+    <h2>Goals</h2>
+    <ul>
+        <li>Become a highly successful and inspiring professional teacher</li>
+        <li>Make a lasting positive impact on my learners' lives through tech-driven education</li>
+    </ul>
+</section>
+
+</body>
+</html>
+</html>
